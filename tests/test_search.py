@@ -1,7 +1,7 @@
 import unittest
 import os
 import csv
-from search import search_contact, CSV_FILE
+from src.search import search_contact, CSV_FILE
  
 class TestSearchContact(unittest.TestCase):
  
@@ -29,5 +29,5 @@ class TestSearchContact(unittest.TestCase):
         results = search_contact('0000000000')
         self.assertEqual(len(results), 0)
  
-if _name_ == '_main_':
-    unittest.main()
+if __name__ == '_main_':
+    unittest.main()

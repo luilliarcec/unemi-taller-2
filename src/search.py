@@ -9,4 +9,4 @@ def read_contacts():
 
 def search_contact(query):
     contacts = read_contacts()
-    return [c for c in contacts if c['Name'] == query or c['Phone'] == query]
+    return [c for c in contacts if c['Name'] == query or c['Phone'] == query]

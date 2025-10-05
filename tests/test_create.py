@@ -1,7 +1,7 @@
 import unittest
 import os
 import csv
-from create import create_contact, CSV_FILE
+from src.create import create_contact, CSV_FILE
  
 class TestCreateContact(unittest.TestCase):
  

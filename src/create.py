@@ -24,4 +24,4 @@ def create_contact(name, phone):
     with open(CSV_FILE, mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([name, phone])
-    return True
+        return True
