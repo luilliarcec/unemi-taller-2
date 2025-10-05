@@ -1,5 +1,3 @@
-name: Python Tests with Coverage
-
 on:
   push:
     branches: [ main ]
@@ -11,25 +9,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔄 Checkout del código
+      - name: Checkout del código
         uses: actions/checkout@v3
 
-      - name: 🐍 Configurar Python
+      - name: Configurar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: 📦 Instalar dependencias
+      - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: ✅ Ejecutar pruebas con cobertura
+      - name: Ejecutar pruebas
+        run: |
+          pytest
+
+      - name: Ejecutar pruebas con cobertura
         run: |
           pytest --cov=src --cov-report=term --cov-report=xml
 
-      - name: 📊 Subir cobertura como artefacto
+      - name: Subir cobertura como artefacto
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
           path: coverage.xml
+
+      - name: Mostrar resumen en GitHub
+        run: |
+          echo '### Coverage Report' >> $GITHUB_STEP_SUMMARY
+          coverage report >> $GITHUB_STEP_SUMMARY
