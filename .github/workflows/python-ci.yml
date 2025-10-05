@@ -25,18 +25,3 @@ jobs:
       - name: Ejecutar pruebas
         run: |
           pytest
-
-      - name: Ejecutar pruebas con cobertura
-        run: |
-          pytest --cov=src --cov-report=term --cov-report=xml
-
-      - name: Subir cobertura como artefacto
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-report
-          path: coverage.xml
-
-      - name: Mostrar resumen en GitHub
-        run: |
-          echo '### Coverage Report' >> $GITHUB_STEP_SUMMARY
-          coverage report >> $GITHUB_STEP_SUMMARY
